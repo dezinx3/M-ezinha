@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Feliz Aniversário, Mãezinha 🎨💛</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ TELA 0 — CAPA / CARTÃO QUE ABRE ============ -->
+<section id="capa" class="tela-capa">
+  <div class="decor-capa" aria-hidden="true">
+    <span class="shape circ" style="width:26px;height:26px;top:10%;left:12%;background:var(--amarelo);animation-delay:.2s"></span>
+    <span class="shape star" style="width:22px;height:22px;top:16%;left:80%;background:var(--branco);animation-delay:.6s"></span>
+    <span class="shape circ" style="width:16px;height:16px;top:78%;left:16%;background:var(--verde);animation-delay:1s"></span>
+    <span class="shape tri" style="top:66%;left:82%;animation-delay:.4s"></span>
+    <span class="shape blob" style="width:34px;height:34px;top:30%;left:6%;background:var(--azul);animation-delay:.8s"></span>
+  </div>
+  <div class="envelope" id="envelope">
+    <div class="envelope-card">
+      <div class="envelope-front">
+        <div class="envelope-selo">🎂</div>
+        <h1 class="envelope-titulo">Para a mulher<br>mais colorida<br>da minha vida</h1>
+        <p class="envelope-sub">toque para abrir</p>
+        <div class="pulse-ring"></div>
+      </div>
+      <div class="envelope-back">
+        <p class="envelope-mensagem">
+          Feliz aniversário, <strong>Mãezinha</strong> 💛<br>
+          Isso aqui foi feito com todo o carinho que tenho pela senhora, te amo, espero que goste!
+        </p>
+        <button class="btn-entrar" id="btnEntrar">Continuar →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TELA 0.5 — GUIA RÁPIDO ============ -->
+<section id="guia" class="tela-guia" hidden>
+  <div class="guia-caixa quadro-britto">
+    <span class="guia-emoji">✨</span>
+    <h2>Antes de começar...</h2>
+    <ul class="guia-lista">
+      <li><span class="guia-icone">👇</span> Deslize para baixo pra passar pelas seções</li>
+      <li><span class="guia-icone">📸</span> As fotos vão aparecer sozinhas — foram escolhidas com carinho</li>
+      <li><span class="guia-icone">🕯️</span> No final tem uma surpresa — toque na velinha!</li>
+    </ul>
+    <button class="btn-entrar" id="btnGuiaOk">Vamos lá! 🎨</button>
+  </div>
+</section>
+
+<!-- ============ MAIN SCROLL ============ -->
+<main id="main" class="scroll-container" hidden>
+
+  <!-- HERO -->
+  <section class="secao hero" data-secao>
+    <div class="decor-secao" aria-hidden="true">
+      <span class="shape circ" style="width:60px;height:60px;top:8%;left:10%;background:var(--amarelo);"></span>
+      <span class="shape circ" style="width:24px;height:24px;top:14%;left:78%;background:var(--azul);animation-delay:.5s"></span>
+      <span class="shape tri" style="top:70%;left:85%;animation-delay:1s"></span>
+      <span class="shape blob" style="width:80px;height:80px;top:66%;left:-6%;background:var(--rosa);animation-delay:.3s"></span>
+      <span class="shape star" style="width:30px;height:30px;top:82%;left:20%;background:var(--verde);animation-delay:.8s"></span>
+      <span class="shape square" style="width:34px;height:34px;top:40%;left:88%;background:var(--coral);animation-delay:1.3s"></span>
+      <span class="partic" style="left:15%; animation-delay:0s"></span>
+      <span class="partic" style="left:35%; animation-delay:1.4s"></span>
+      <span class="partic" style="left:55%; animation-delay:2.6s"></span>
+      <span class="partic" style="left:75%; animation-delay:.8s"></span>
+      <span class="partic" style="left:90%; animation-delay:2s"></span>
+    </div>
+    <div class="hero-conteudo">
+      <p class="eyebrow">04 de julho · dia de comemorar você</p>
+      <h1 class="hero-titulo">
+        Feliz<br><span class="destaque">Aniversário</span><br>Mãezinha
+      </h1>
+      <p class="hero-sub">Um cantinho feito só pra te lembrar do quanto você é amada.</p>
+
+      <div class="heart-britto-wrap" aria-hidden="true">
+        <div class="heart-outline"></div>
+        <div class="heart-fill"></div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span></span>continue descendo
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM É ELA -->
+  <section class="secao pastel-creme" data-secao>
+    <div class="decor-secao" aria-hidden="true">
+      <span class="shape circ" style="width:36px;height:36px;top:8%;left:84%;background:var(--rosa)"></span>
+      <span class="shape tri" style="top:82%;left:8%;"></span>
+      <span class="shape blob" style="width:50px;height:50px;top:70%;left:88%;background:var(--amarelo);animation-delay:.6s"></span>
+    </div>
+    <div class="quadro-britto foto-slot" data-foto-slot>
+      <img src="images/capa-mae.jpg" alt="Foto especial da Mãezinha" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+      <div class="foto-placeholder">
+        <span>🖼️</span>
+        <p>Adicione o arquivo<br><code>capa-mae.jpeg</code><br>na pasta <code>images/</code></p>
+      </div>
+    </div>
+    <div class="texto-bloco">
+      <span class="rotulo">quem é você pra mim</span>
+      <h2>A mulher que colore tudo</h2>
+      <p>
+        Você é aquela pessoa que transforma qualquer dia cinza em uma tela cheia de cor.
+        Cada conselho, cada abraço, cada "vai dar tudo certo" — tudo isso foi pintando,
+        pouquinho a pouquinho, a pessoa que eu sou hoje. E o mais bonito é que você faz
+        isso parecer fácil, mesmo quando eu sei o quanto você se dedica por nós.
+      </p>
+      <p>
+        Assim como o Homero Britto enxerga beleza e alegria até nas formas mais simples,
+        eu enxergo em você a prova de que amor de verdade também é isso: cor, força e
+        um sorriso que não cabe na moldura.
+      </p>
+    </div>
+  </section>
+
+  <!-- LINHA DO TEMPO / MOMENTOS -->
+  <section class="secao momentos" data-secao>
+    <div class="decor-secao" aria-hidden="true">
+      <span class="shape circ" style="width:26px;height:26px;top:6%;left:10%;background:var(--amarelo)"></span>
+      <span class="shape star" style="width:28px;height:28px;top:4%;left:80%;background:var(--azul);animation-delay:.5s"></span>
+      <span class="shape tri" style="top:50%;left:90%;animation-delay:1s"></span>
+      <span class="shape blob" style="width:60px;height:60px;top:90%;left:4%;background:var(--rosa);animation-delay:.3s"></span>
+      <span class="shape circ" style="width:18px;height:18px;top:34%;left:4%;background:var(--verde);animation-delay:.9s"></span>
+      <span class="shape square" style="width:26px;height:26px;top:70%;left:92%;background:var(--coral);animation-delay:1.2s"></span>
+    </div>
+    <div class="secao-header">
+      <span class="rotulo rotulo-claro">nossa galeria</span>
+      <h2 class="titulo-claro">Momentos que a gente guarda</h2>
+      <p class="sub-claro">Cada foto aqui é um pedacinho de uma história boa.</p>
+    </div>
+
+    <div class="momento-card quadro-britto cor-1" data-secao-sub>
+      <div class="foto-slot" data-foto-slot>
+        <img src="images/momento-1.jpeg" alt="Momento em família 1" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span><p>arquivo<br><code>momento-1.jpeg</code></p></div>
+      </div>
+      <div class="momento-texto">
+        <span class="momento-tag">Viagem ao cedro depois de visitar minha casa</span>
+        <p contenteditable="true" data-editavel>obrigado pelas vezes que esteve sorrindo com a gente mesmo quando ai dentro estava um caos.</p>
+      </div>
+    </div>
+
+    <div class="momento-card quadro-britto cor-2" data-secao-sub>
+      <div class="foto-slot" data-foto-slot>
+        <img src="images/momento-2.jpeg" alt="Momento em família 2" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span><p>arquivo<br><code>momento-2.jpeg</code></p></div>
+      </div>
+      <div class="momento-texto">
+        <span class="momento-tag">Ida ao santuário no mesmo dia</span>
+        <p contenteditable="true" data-editavel>Essa não podia ficar de fora hein, precisamos fazer isso mais vezes...</p>
+      </div>
+    </div>
+
+    <div class="momento-card quadro-britto cor-3" data-secao-sub>
+      <div class="foto-slot" data-foto-slot>
+        <img src="images/momento-3.jpeg" alt="Momento em família 3" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span><p>arquivo<br><code>momento-3.jpeg</code></p></div>
+      </div>
+      <div class="momento-texto">
+        <span class="momento-tag">aquelas nossas festinhas improvisadas super planejadas</span>
+        <p contenteditable="true" data-editavel>A nostalgia é um sentimento perigoso, por que me faz querer voltar no tempo e revivier esses pequenos grandes momentos.</p>
+      </div>
+    </div>
+
+    <div class="momento-card quadro-britto cor-4" data-secao-sub>
+      <div class="foto-slot" data-foto-slot>
+        <img src="images/momento-4.jpeg" alt="Momento em família 4" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span><p>arquivo<br><code>momento-4.jpeg</code></p></div>
+      </div>
+      <div class="momento-texto">
+        <span class="momento-tag">Aquele são joão que o pai não queria que eu fosse kkkkkk</span>
+        <p contenteditable="true" data-editavel>Uma das lições mais valiosas que aprendi foi justamente sobre ser eu independente de qualquer coisa, obrigado por ser minha guia nos melhores e piores momentos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTAS dos filhos -->
+  <section class="secao pastel-rosa" data-secao>
+    <div class="decor-secao" aria-hidden="true">
+      <span class="shape circ" style="width:30px;height:30px;top:6%;left:8%;background:var(--azul)"></span>
+      <span class="shape star" style="width:22px;height:22px;top:10%;left:86%;background:var(--coral);animation-delay:.4s"></span>
+      <span class="shape blob" style="width:44px;height:44px;top:88%;left:82%;background:var(--verde);animation-delay:.7s"></span>
+    </div>
+    <div class="secao-header">
+      <span class="rotulo">com amor, seus filhos</span>
+      <h2>Duas cartas pra você</h2>
+      <p class="sub-escuro">Toque em cada cartão pra ler.</p>
+    </div>
+    <div class="cartas-grid">
+      <button class="carta quadro-britto" data-carta type="button">
+        <div class="carta-frente">
+          <span class="carta-icone">💌</span>
+          <h3>André</h3>
+          <p>toque para ler</p>
+        </div>
+        <div class="carta-verso">
+          <p contenteditable="true" data-editavel>
+            não existem palavras suficientes para expressar o quanto eu te amo. 
+            Sou imensamente grato por ter você na minha vida e tenho orgulho de chamar uma mulher tão 
+            incrível de mãe. Sua força, seu amor e seu coração fazem de você a pessoa mais especial que conheço. 
+            Te amo hoje e sempre. ❤️
+          </p>
+          <span class="carta-assinatura">— André</span>
+        </div>
+      </button>
+      <button class="carta quadro-britto" data-carta type="button">
+        <div class="carta-frente">
+          <span class="carta-icone">💌</span>
+          <h3>Noemir</h3>
+          <p>toque para ler</p>
+        </div>
+        <div class="carta-verso">
+          <p contenteditable="true" data-editavel>
+            só queria dizer o quanto eu te amo e o quanto sou feliz por ter você na minha vida. 
+            Você é uma pessoa incrível, e sou muito grata por tudo o que faz por mim. 
+            Obrigado por ser essa mãe maravilhosa. Te amo! ❤️
+          </p>
+          <span class="carta-assinatura">— Noemir</span>
+        </div>
+      </button>
+    </div>
+  </section>
+
+  <!-- MURAL DE FOTOS -->
+  <section class="secao mural" data-secao>
+    <div class="decor-secao" aria-hidden="true">
+      <span class="shape circ" style="width:28px;height:28px;top:5%;left:6%;background:var(--coral)"></span>
+      <span class="shape tri" style="top:4%;left:88%;animation-delay:.5s"></span>
+      <span class="shape blob" style="width:40px;height:40px;top:92%;left:10%;background:var(--amarelo);animation-delay:.9s"></span>
+      <span class="shape star" style="width:24px;height:24px;top:90%;left:86%;background:var(--rosa);animation-delay:.3s"></span>
+    </div>
+    <div class="secao-header">
+      <span class="rotulo rotulo-claro">mural da família</span>
+      <h2 class="titulo-claro">Um pouquinho de tudo</h2>
+    </div>
+    <div class="mural-grid">
+      <div class="foto-slot mural-item item-1" data-foto-slot>
+        <img src="images/mural-1.jpeg" alt="Foto da família 1" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span></div>
+      </div>
+      <div class="foto-slot mural-item item-2" data-foto-slot>
+        <img src="images/mural-2.jpeg" alt="Foto da família 2" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span></div>
+      </div>
+      <div class="foto-slot mural-item item-3" data-foto-slot>
+        <img src="images/mural-3.jpeg" alt="Foto da família 3" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span></div>
+      </div>
+      <div class="foto-slot mural-item item-4" data-foto-slot>
+        <img src="images/mural-4.jpeg" alt="Foto da família 4" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span></div>
+      </div>
+      <div class="foto-slot mural-item item-5" data-foto-slot>
+        <img src="images/mural-5.jpeg" alt="Foto da família 5" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span></div>
+      </div>
+      <div class="foto-slot mural-item item-6" data-foto-slot>
+        <img src="images/mural-6.jpeg" alt="Foto da família 6" onerror="this.closest('[data-foto-slot]').classList.add('sem-foto')">
+        <div class="foto-placeholder"><span>🖼️</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL / VELINHA -->
+  <section class="secao final" data-secao>
+    <div class="decor-secao" aria-hidden="true">
+      <span class="shape circ" style="width:22px;height:22px;top:8%;left:14%;background:var(--amarelo)"></span>
+      <span class="shape star" style="width:26px;height:26px;top:12%;left:82%;background:var(--azul);animation-delay:.5s"></span>
+      <span class="shape blob" style="width:70px;height:70px;top:78%;left:-8%;background:var(--rosa);animation-delay:.8s"></span>
+      <span class="shape tri" style="top:60%;left:90%;animation-delay:1.1s"></span>
+      <span class="partic" style="left:20%; animation-delay:.3s"></span>
+      <span class="partic" style="left:50%; animation-delay:1.6s"></span>
+      <span class="partic" style="left:80%; animation-delay:2.3s"></span>
+    </div>
+    <div class="final-conteudo">
+      <span class="rotulo">o mais importante</span>
+      <h2 class="final-titulo">Você é muito amada.</h2>
+      <p class="final-texto">
+        Por mim, pela Noemir, por essa família inteira que você segurou
+        com tanto amor. Que seu novo ano seja tão colorido e cheio de vida quanto
+        você é pra gente.
+      </p>
+
+      <button class="vela-wrap" id="btnVela" aria-label="Toque para fazer o pedido">
+        <svg class="vela-svg" viewBox="0 0 120 200" aria-hidden="true">
+          <ellipse class="chama" cx="60" cy="30" rx="14" ry="24"/>
+          <rect class="pavio" x="57" y="46" width="6" height="14" rx="2"/>
+          <rect class="bolo" x="10" y="60" width="100" height="130" rx="16"/>
+          <path class="cobertura" d="M10 76 Q 35 56 60 76 T 110 76 V 92 H 10 Z"/>
+        </svg>
+        <span class="vela-legenda">toque na velinha e faça um pedido por ela 🕯️</span>
+      </button>
+
+      <div class="assinatura-final">
+        <p>Com todo o amor do mundo,</p>
+        <p class="assinatura-nomes">André 💛</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+<script src="js/script.js"></script>
+</body>
+</html>

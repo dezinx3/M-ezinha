@@ -1,0 +1,349 @@
+/* =========================================================
+   TOKENS
+========================================================= */
+:root{
+  --coral: #FF4B5C;
+  --amarelo: #FFD23F;
+  --azul: #00A8E8;
+  --rosa: #FF3E9D;
+  --verde: #33C481;
+  --tinta: #16161A;
+  --creme: #FFF3E4;
+  --rosa-pastel: #FFE3EE;
+  --azul-pastel: #DCF3FF;
+  --branco: #FFFDF9;
+
+  --font-titulo: 'Baloo 2', system-ui, sans-serif;
+  --font-corpo: 'Nunito', system-ui, sans-serif;
+
+  --radius-britto: 28px;
+  --sombra-dura: 6px 6px 0 var(--tinta);
+  --sombra-dura-sm: 4px 4px 0 var(--tinta);
+}
+
+*{ box-sizing: border-box; }
+[hidden]{ display:none !important; }
+html,body{
+  margin:0; padding:0;
+  background: var(--tinta);
+  color: var(--tinta);
+  font-family: var(--font-corpo);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+h1,h2,h3{ font-family: var(--font-titulo); margin:0; line-height:1.05; }
+p{ margin:0; }
+button{ font-family: var(--font-corpo); border:none; background:none; cursor:pointer; }
+img{ max-width:100%; display:block; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* =========================================================
+   FORMAS FLUTUANTES DE FUNDO (assinatura visual Britto)
+   Cada seção tem seu próprio "decor-secao" para as formas
+   ficarem SEMPRE visíveis por trás do conteúdo (nunca atrás
+   do fundo opaco da seção).
+========================================================= */
+.decor-secao, .decor-capa{
+  position:absolute; inset:0; z-index:0; pointer-events:none; overflow:hidden;
+}
+.shape{ position:absolute; opacity:.95; filter: drop-shadow(3px 3px 0 rgba(0,0,0,.18)); animation: flutuar 7s ease-in-out infinite; }
+.circ{ border-radius:50%; border:4px solid var(--tinta); }
+.tri{ width:0;height:0; border-left:18px solid transparent; border-right:18px solid transparent; border-bottom:32px solid var(--rosa); animation: girar 11s linear infinite; }
+.square{ border:4px solid var(--tinta); border-radius: 8px; transform: rotate(12deg); }
+.blob{ border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%; border:4px solid var(--tinta); }
+.star{
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  border: none; filter: drop-shadow(2px 2px 0 rgba(0,0,0,.18));
+  animation: girar 16s linear infinite, flutuar 6s ease-in-out infinite;
+}
+
+@keyframes flutuar{ 0%,100%{ transform: translateY(0) rotate(0deg);} 50%{ transform: translateY(-20px) rotate(8deg);} }
+@keyframes girar{ from{ transform: rotate(0deg);} to{ transform: rotate(360deg);} }
+
+/* Partículas ambiente — sobem devagar como confete flutuando */
+.partic{
+  position:absolute; bottom:-20px; width:9px; height:14px; border-radius:3px;
+  background: var(--amarelo); opacity:.8;
+  animation: subir 9s linear infinite;
+}
+.partic:nth-child(odd){ background: var(--rosa); width:7px; height:11px; }
+.partic:nth-of-type(3n){ background: var(--azul); border-radius:50%; width:8px; height:8px; }
+@keyframes subir{
+  0%{ transform: translateY(0) rotate(0deg); opacity:0; }
+  10%{ opacity:.9; }
+  90%{ opacity:.7; }
+  100%{ transform: translateY(-115vh) rotate(340deg); opacity:0; }
+}
+
+/* =========================================================
+   MOLDURA "QUADRO BRITTO" REUTILIZÁVEL
+========================================================= */
+.quadro-britto{
+  background: var(--branco);
+  border: 5px solid var(--tinta);
+  border-radius: var(--radius-britto);
+  box-shadow: var(--sombra-dura);
+  position: relative;
+}
+.quadro-britto::after{
+  content:"";
+  position:absolute; top:-14px; right:-14px;
+  width:30px; height:30px; border-radius:50%;
+  background: var(--amarelo); border:4px solid var(--tinta);
+}
+
+/* =========================================================
+   TELA 0 — CAPA / ENVELOPE
+========================================================= */
+.tela-capa{
+  position: fixed; inset:0; z-index:50;
+  display:flex; align-items:center; justify-content:center;
+  background: radial-gradient(circle at 30% 20%, #2b1e45 0%, var(--tinta) 65%);
+  padding: 24px;
+  perspective: 1400px;
+  overflow:hidden;
+}
+.envelope{ width: 100%; max-width: 380px; position:relative; z-index:1; }
+.envelope-card{
+  position: relative;
+  width:100%; aspect-ratio: 3/4.3;
+  transform-style: preserve-3d;
+  transition: transform 1s cubic-bezier(.65,0,.35,1);
+}
+.envelope.aberto .envelope-card{ transform: rotateY(180deg); }
+
+.envelope-front, .envelope-back{
+  position:absolute; inset:0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-britto);
+  border:5px solid var(--tinta);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding: 32px 24px;
+}
+.envelope-front{
+  background: linear-gradient(155deg, var(--coral) 0%, var(--rosa) 55%, var(--amarelo) 100%);
+  box-shadow: var(--sombra-dura);
+  cursor:pointer;
+}
+.envelope-selo{ font-size: 46px; margin-bottom: 14px; animation: balancar 2.4s ease-in-out infinite; }
+@keyframes balancar{ 0%,100%{ transform: rotate(-6deg);} 50%{ transform: rotate(6deg);} }
+.envelope-titulo{ color:var(--branco); font-size: clamp(24px,7vw,32px); text-shadow: 3px 3px 0 rgba(0,0,0,.2); }
+.envelope-sub{ margin-top:18px; color:var(--branco); font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:13px; }
+.pulse-ring{
+  position:absolute; bottom: 26px; width:52px; height:52px; border-radius:50%;
+  border: 3px solid var(--branco); opacity:.8;
+  animation: pulso 1.8s ease-out infinite;
+}
+@keyframes pulso{ 0%{ transform: scale(.6); opacity:.9;} 100%{ transform: scale(1.6); opacity:0;} }
+
+.envelope-back{
+  background: var(--branco);
+  transform: rotateY(180deg);
+  gap: 22px;
+}
+.envelope-mensagem{ font-size: 17px; line-height:1.6; }
+.envelope-mensagem strong{ color: var(--coral); }
+.btn-entrar{
+  background: var(--tinta); color: var(--branco);
+  padding: 14px 30px; border-radius: 999px; font-weight:800; font-size:15px;
+  box-shadow: var(--sombra-dura-sm); border: 3px solid var(--tinta);
+  transition: transform .15s ease;
+}
+.btn-entrar:active{ transform: translate(3px,3px); box-shadow:none; }
+
+/* =========================================================
+   TELA GUIA RÁPIDO
+========================================================= */
+.tela-guia{
+  position:fixed; inset:0; z-index:45;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(22,22,26,.94); padding:24px;
+}
+.guia-caixa{ max-width: 380px; width:100%; padding: 36px 28px; text-align:center; }
+.guia-emoji{ font-size:40px; }
+.guia-caixa h2{ margin:10px 0 22px; font-size:24px; }
+.guia-lista{ list-style:none; margin:0 0 26px; padding:0; display:flex; flex-direction:column; gap:16px; text-align:left; }
+.guia-lista li{ display:flex; align-items:center; gap:12px; font-weight:700; font-size:15px; }
+.guia-icone{ font-size:22px; flex-shrink:0; }
+
+/* =========================================================
+   MAIN / SEÇÕES
+========================================================= */
+.scroll-container{ position:relative; z-index:1; scroll-behavior:smooth; }
+.secao{
+  min-height:100svh;
+  padding: 90px 22px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+  opacity:0; transform: translateY(40px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+.secao.em-vista{ opacity:1; transform:none; }
+/* garante que todo conteúdo real fique acima da camada decorativa */
+.secao > *:not(.decor-secao){ position:relative; z-index:1; }
+
+.pastel-creme{ background: var(--creme); }
+.pastel-rosa{ background: var(--rosa-pastel); }
+
+/* HERO */
+.hero{
+  background: linear-gradient(165deg, var(--tinta) 0%, #241938 55%, var(--tinta) 100%);
+  text-align:center;
+}
+.eyebrow{ color: var(--amarelo); font-weight:800; letter-spacing:.12em; text-transform:uppercase; font-size:12px; margin-bottom:18px; }
+.hero-titulo{ color: var(--branco); font-size: clamp(38px, 11vw, 60px); }
+.hero-titulo .destaque{
+  color: var(--coral);
+  -webkit-text-stroke: 2px var(--branco);
+}
+.hero-sub{ color: rgba(255,255,255,.75); font-size:16px; margin-top:20px; max-width:320px; }
+
+/* Coração-mosaico — elemento de assinatura do site, inspirado nos
+   blocos de cor geométricos do Homero Britto.
+   Dois elementos empilhados por ordem no DOM (sem z-index) para
+   nunca sofrer conflito de contexto de empilhamento com a seção. */
+.heart-britto-wrap{
+  width: 130px; height: 118px; margin: 42px auto 0;
+  position: relative;
+  animation: pulsar-coracao 2.6s ease-in-out infinite;
+}
+.heart-outline, .heart-fill{
+  position:absolute; inset:0;
+  clip-path: path('M65,20 C48,-2 8,6 8,42 C8,80 65,112 65,118 C65,112 122,80 122,42 C122,6 82,-2 65,20 Z');
+}
+.heart-outline{ background: var(--tinta); }
+.heart-fill{
+  background: conic-gradient(from 90deg at 50% 50%,
+    var(--coral) 0deg, var(--amarelo) 60deg, var(--azul) 130deg,
+    var(--verde) 200deg, var(--rosa) 270deg, var(--coral) 360deg);
+  transform: scale(0.9);
+}
+@keyframes pulsar-coracao{ 0%,100%{ transform: scale(1);} 50%{ transform: scale(1.06);} }
+
+.scroll-hint{ margin-top:40px; color:var(--branco); font-size:12px; letter-spacing:.1em; text-transform:uppercase; opacity:.7; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.scroll-hint span{ width:2px; height:34px; background: var(--amarelo); border-radius:2px; animation: descer 1.6s ease-in-out infinite; }
+@keyframes descer{ 0%{ transform: scaleY(0); transform-origin:top; opacity:0;} 40%{ transform: scaleY(1); transform-origin:top; opacity:1;} 60%{ transform: scaleY(1); transform-origin:bottom; opacity:1;} 100%{ transform: scaleY(0); transform-origin:bottom; opacity:0;} }
+
+/* FOTO SLOT genérico */
+.foto-slot{
+  position:relative; width: min(320px, 84vw); aspect-ratio: 4/5;
+  overflow:hidden; margin-bottom: 34px;
+}
+.foto-slot img{ width:100%; height:100%; object-fit:cover; }
+.foto-placeholder{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px; background: repeating-linear-gradient(135deg, var(--azul-pastel), var(--azul-pastel) 12px, #eaf9ff 12px, #eaf9ff 24px);
+  color: var(--tinta); font-weight:700; text-align:center; font-size:13px; opacity:0; pointer-events:none;
+  padding: 16px;
+}
+.foto-slot.sem-foto .foto-placeholder{ opacity:1; }
+.foto-placeholder span{ font-size:28px; }
+.foto-placeholder code{
+  display:inline-block; background: var(--tinta); color: var(--amarelo);
+  padding: 3px 8px; border-radius:6px; font-size:12px; font-family: monospace; margin-top:2px;
+}
+
+/* TEXTO BLOCO */
+.texto-bloco{ max-width: 480px; text-align:center; }
+.rotulo{
+  display:inline-block; background: var(--coral); color:var(--branco);
+  padding: 6px 16px; border-radius:999px; font-weight:800; font-size:11px;
+  letter-spacing:.1em; text-transform:uppercase; margin-bottom:16px;
+}
+.rotulo-claro{ background: var(--amarelo); color: var(--tinta); }
+.texto-bloco h2{ font-size: clamp(26px,7vw,34px); margin-bottom:18px; }
+.texto-bloco p{ font-size:15.5px; line-height:1.75; margin-bottom:14px; color:#3a3a3f; }
+
+/* MOMENTOS */
+.momentos{ background: var(--tinta); gap: 60px; padding-top:110px; padding-bottom:110px; }
+.secao-header{ text-align:center; max-width:420px; margin-bottom:8px; }
+.titulo-claro{ color: var(--branco); font-size: clamp(26px,7vw,34px); margin-bottom:12px; }
+.sub-claro{ color: rgba(255,255,255,.7); font-size:14.5px; line-height:1.6; }
+.sub-escuro{ font-size:14.5px; line-height:1.6; color:#4a3540; }
+
+.momento-card{
+  width:min(340px, 90vw); padding: 22px; display:flex; flex-direction:column; align-items:center;
+  transform: rotate(var(--tilt,-1.5deg));
+}
+.momento-card .foto-slot{ margin-bottom:20px; width:100%; }
+.cor-1{ --tilt:-2deg; } .cor-1::after{ background:var(--amarelo); }
+.cor-2{ --tilt:1.5deg; } .cor-2::after{ background:var(--azul); }
+.cor-3{ --tilt:-1deg; } .cor-3::after{ background:var(--rosa); }
+.cor-4{ --tilt:2deg; } .cor-4::after{ background:var(--verde); }
+.momento-tag{ display:block; font-weight:800; color: var(--coral); font-size:12px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; }
+.momento-texto p{ font-size:15px; line-height:1.65; color:#3a3a3f; }
+.momento-texto p[data-editavel]:focus{ outline: 2px dashed var(--coral); border-radius:8px; padding:4px; }
+
+/* CARTAS */
+.cartas-grid{ display:flex; flex-direction:column; gap:26px; width:100%; max-width:380px; margin-top: 10px; }
+.carta{
+  perspective: 1200px; height: 210px; width:100%; padding:0;
+}
+.carta > div{
+  position:absolute; inset:0; backface-visibility:hidden; border-radius: var(--radius-britto);
+  border:5px solid var(--tinta); display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding: 22px; transition: transform .8s cubic-bezier(.65,0,.35,1);
+  text-align:center;
+}
+.carta{ position:relative; }
+.carta-frente{ background: linear-gradient(150deg, var(--azul), var(--verde)); color:var(--branco); box-shadow: var(--sombra-dura); }
+.carta-frente h3{ font-size:20px; margin: 10px 0 6px; }
+.carta-icone{ font-size:32px; }
+.carta-frente p{ font-size:12px; opacity:.85; letter-spacing:.08em; text-transform:uppercase; font-weight:800; }
+.carta-verso{ background: var(--branco); transform: rotateY(180deg); gap:14px; overflow-y:auto; }
+.carta-verso p{ font-size:14px; line-height:1.6; color:#3a3a3f; }
+.carta-assinatura{ font-weight:800; color: var(--rosa); font-family: var(--font-titulo); }
+.carta.virada .carta-frente{ transform: rotateY(180deg); }
+.carta.virada .carta-verso{ transform: rotateY(360deg); }
+
+/* MURAL */
+.mural{ background: var(--azul-pastel); padding-top:100px; }
+.mural-grid{
+  display:grid; grid-template-columns: repeat(2,1fr); gap:14px; width:100%; max-width: 420px; margin-top: 30px;
+}
+.mural-item{ width:100%; aspect-ratio:1/1; margin:0; border:4px solid var(--tinta); border-radius:18px; box-shadow: var(--sombra-dura-sm); }
+.mural-item.item-1, .mural-item.item-4{ transform: rotate(-2deg); }
+.mural-item.item-2, .mural-item.item-5{ transform: rotate(2deg); }
+.mural-item.item-3, .mural-item.item-6{ transform: rotate(-1.5deg); }
+
+/* FINAL */
+.final{
+  background: linear-gradient(180deg, var(--tinta) 0%, #2b1e45 100%);
+  text-align:center; overflow:hidden;
+}
+.final-conteudo{ max-width: 420px; display:flex; flex-direction:column; align-items:center; }
+.final-titulo{ color:var(--branco); font-size: clamp(30px,8vw,42px); margin: 14px 0 18px; }
+.final-texto{ color: rgba(255,255,255,.78); font-size:15.5px; line-height:1.75; margin-bottom: 40px; }
+
+.vela-wrap{ display:flex; flex-direction:column; align-items:center; gap:16px; }
+.vela-svg{ width:110px; height:auto; }
+.chama{ fill:#ffcf4d; transform-origin: 60px 42px; animation: tremular 1.4s ease-in-out infinite; }
+@keyframes tremular{ 0%,100%{ transform: scale(1) rotate(0deg);} 50%{ transform: scale(1.08) rotate(-3deg);} }
+.pavio{ fill:#5a4326; }
+.bolo{ fill: var(--rosa); stroke: var(--branco); stroke-width:4; }
+.cobertura{ fill: var(--amarelo); stroke: var(--branco); stroke-width:4; }
+.vela-wrap.apagada .chama{ opacity:0; animation:none; }
+.vela-legenda{ color: var(--branco); font-size:13px; font-weight:700; opacity:.75; max-width:220px; }
+
+.assinatura-final{ margin-top: 50px; color: rgba(255,255,255,.85); }
+.assinatura-final p{ font-size:14px; }
+.assinatura-nomes{ font-family: var(--font-titulo); font-size:22px; color: var(--amarelo); margin-top:8px; }
+
+/* CONFETTI CANVAS */
+#confetti-canvas{ position:fixed; inset:0; pointer-events:none; z-index:80; }
+
+/* =========================================================
+   TABLET / DESKTOP AJUSTES (mantendo foco mobile)
+========================================================= */
+@media (min-width: 640px){
+  .quem-e-ela, .secao.pastel-creme{ flex-direction:row; }
+  .mural-grid{ max-width: 520px; grid-template-columns: repeat(3,1fr); }
+  .cartas-grid{ flex-direction:row; max-width: 640px; }
+}
+@media (min-width: 900px){
+  .secao.pastel-creme{ flex-direction:row; gap:60px; text-align:left; }
+  .secao.pastel-creme .texto-bloco{ text-align:left; }
+}

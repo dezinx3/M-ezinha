@@ -1,0 +1,7 @@
+Coloque aqui suas fotos com estes nomes exatos (jpg, jpeg ou png):
+
+capa-mae.jpg     -> foto principal dela
+momento-1.jpg    -> até momento-4.jpg (linha de momentos)
+mural-1.jpg      -> até mural-6.jpg (mural final)
+
+Veja o arquivo LEIA-ME.md na pasta principal para instruções completas.
